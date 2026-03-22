@@ -1,0 +1,58 @@
+<div class="container mt-4">
+  <h1 class="mb-4">マイページ</h1>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow">
+        <div class="card-body">
+          <h5>ユーザー情報</h5>
+          <p>名前: <%= @user.name %></p>
+          <p>メール: <%= @user.email %></p>
+          <p>合計距離: <%= @total_distance %> m</p>
+
+          <%= link_to "プロフィール編集", edit_user_path(@user), class: "btn btn-primary w-100 mb-2" %>
+
+          <%= link_to "退会する", user_path(@user),
+            method: :delete,
+                data: { confirm: "本当に退会しますか？" },
+                class: "btn btn-danger w-100" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">練習記録</h2>
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-success" %>
+      </div>
+
+      <% if @posts.any? %>
+        <% @posts.each do |post| %>
+          <div class="card mb-2 shadow-sm">
+            <div class="card-body">
+              <h5><%= post.title %></h5>
+              <p><%= post.content %></p>
+
+              <p>種目: <%= post.stroke %></p>
+              <p>時間: <%= post.time %> 分</p>
+              <p>距離: <%= post.distance %> m</p>
+              <p>今月の距離: <%= @monthly_distance %> m</p>
+
+              <p class="text-muted">
+                <%= post.created_at.strftime("%Y/%m/%d") %>
+              </p>
+
+              <%= link_to "編集", edit_post_path(post), class: "btn btn-sm btn-warning" %>
+              <%= link_to "削除", post_path(post),
+                    method: :delete,
+                    data: { confirm: "削除しますか？" },
+                    class: "btn btn-sm btn-danger" %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>まだ練習記録がありません</p>
+      <% end %>
+    </div>
+  </div>
+</div>

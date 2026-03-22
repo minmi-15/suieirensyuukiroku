@@ -1,0 +1,11 @@
+<h1>練習記録を編集</h1>
+
+<%= form_with model: @post do |f| %>
+  <p>練習タイトル</p>
+  <%= f.text_field :title %>
+
+  <p>練習内容</p>
+  <%= f.text_area :content %>
+
+  <%= f.submit "更新する" %>
+<% end %>

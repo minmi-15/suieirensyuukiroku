@@ -1,0 +1,21 @@
+<h1>練習記録を投稿</h1>
+<%= form_with model: @post, local: true do |f| %>
+  <%= render "layouts/error_messages", model: f.object %>
+
+  <p>練習タイトル</p>
+  <%= f.text_field :title %>
+
+  <p>練習内容</p>
+  <%= f.text_area :content %>
+
+  <p>距離(m)</p>
+  <%= f.number_field :distance %>
+
+  <p>種目</p>
+  <%= f.text_field :stroke %>
+
+  <p>時間(分)</p>
+  <%= f.number_field :time %>
+
+  <%= f.submit "記録する" %>
+<% end %>
