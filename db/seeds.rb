@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Admin.create!(email: "guest@i.co.jp", password: "swim40")
+
+(1..10).each do |i|
+  User.create!(
+    name: "user_#{i}",
+    email: "user_#{i}@tesst.com",
+    password: "password"
+  )
+end
+
+User.all.limit(3).each do |user|
+  (1..3).each do |i|
+    user.posts.create!(
+      title: "sample_#{i}",
+      content: "sample" * rand(3..5),
+      distance: rand(1..3) * 100,
+      stroke: "test",
+      time: "15min"
+    )
+  end
+end
