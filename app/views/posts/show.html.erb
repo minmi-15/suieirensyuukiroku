@@ -5,6 +5,20 @@
 
 <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" } %>
 
+<% if current_user.favorites.find_by(post_id: @post.id) %>
+  <p>
+    <%= link_to post_favorites_path(@post), method: :delete do %>
+      ♥<%= @post.favorites.count %> いいね
+    <% end %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to post_favorites_path(@post), method: :post do %>
+      ♡<%= @post.favorites.count %> いいね
+    <% end %>
+  </p>
+<% end %>
+
 <div>
   <p>コメント件数:<%= @post.post_comments.count %></p>
 
