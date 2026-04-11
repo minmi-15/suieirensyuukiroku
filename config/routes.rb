@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   get 'mypage', to: 'users#show'
 
   resources :users, only: [:show, :edit, :update]
-  resources :posts
+  resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+  end
 end
