@@ -1,21 +1,23 @@
-<div class="container text-center mt-5">
-  <h1 class="mb-3">ようこそ！</h1>
+<div class="container text-center" style="margin-top: 80px;">
+
+  <i class="fa-solid fa-person-swimming" 
+     style="font-size: 4.5rem; color: #0d6efd; margin-bottom: 30px;"></i>
+
+  <h1 class="mb-2">ようこそ！</h1>
   <h3 class="mb-4">水泳練習記録アプリへ</h3>
 
-  <p class="text-muted mb-4">
+  <p class="text-muted mb-3">
     練習内容・距離・時間を記録して、あなたの成長を見える化しましょう。
   </p>
-
-  <p class="text-muted">
-      ・練習記録を簡単に管理できます<br>
-      ・月ごとの合計距離を自動で集計します<br>
-      ・マイページで成長を振り返れます
+  <p class="text-muted mb-4">
+    日々の練習を簡単に管理し、月ごとの合計距離や成長の変化を確認できます。
   </p>
 
   <% if user_signed_in? %>
-    <div class="d-flex justify-content-center gap-3">
+    <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
       <%= link_to "マイページへ", mypage_path, class: "btn btn-primary btn-lg" %>
       <%= link_to "新規投稿", new_post_path, class: "btn btn-success btn-lg" %>
     </div>
   <% end %>
+
 </div>
