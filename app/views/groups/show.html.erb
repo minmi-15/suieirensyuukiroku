@@ -1,0 +1,17 @@
+<h2><%= @group.name %></h2>
+
+<p><%= @group.introduction %></p>
+
+<p>Owner: <%= @group.owner.name %></p>
+
+<% if @group.owner_id != current_user.id %>
+  <% if @group.users.include?(current_user) %>
+    <%= button_to "Leave this group", group_leave_path(@group), method: :delete %>
+  <% else %>
+    <%= button_to "Join this group", group_join_path(@group), method: :post %>
+  <% end %>
+<% end %>
+
+<% if @group.owner_id == current_user.id%>
+  <%= link_to "Notice an Event", group_new_event_path(@group), class: "btn btn-warnig" %>
+<% end %>

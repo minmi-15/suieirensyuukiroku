@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :groups do
+    post "join"
+    delete "leave"
+    get "new_event"
+    post "sent_event"
+  end
   devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/admins/sessions',
   }

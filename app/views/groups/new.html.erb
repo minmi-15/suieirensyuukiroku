@@ -1,0 +1,17 @@
+<h2>グループ作成</h2>
+
+<%= form_with model: @group, local: true do |f| %>
+  <div>
+    <%= f.label :name, "グループ名" %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :introduction, "紹介文" %><br>
+    <%= f.text_area :introduction %>
+  </div>
+
+  <div>
+    <%= f.submit "Create Group", class: "btn btn-primary mt-3" %>
+  </div>
+<% end %>
