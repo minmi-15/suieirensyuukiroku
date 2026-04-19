@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     post "join"
     delete "leave"
     get "new_event"
-    post "sent_event"
+    post "send_event"
   end
   devise_for :admins, path: 'admin', controllers: {
     sessions: 'admin/admins/sessions',

@@ -2,7 +2,7 @@
 
 <p><%= @group.introduction %></p>
 
-<p>Owner: <%= @group.owner.name %></p>
+<<p>Owner: <%= @group.owner.name %></p>
 
 <% if @group.owner_id != current_user.id %>
   <% if @group.users.include?(current_user) %>
