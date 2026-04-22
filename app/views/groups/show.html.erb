@@ -13,5 +13,5 @@
 <% end %>
 
 <% if @group.owner_id == current_user.id%>
-  <%= link_to "Notice an Event", group_new_event_path(@group), class: "btn btn-warnig" %>
+  <%= link_to "イベント通知", group_new_event_path(@group), class: "btn btn-warning mt-3 text-white" %>
 <% end %>

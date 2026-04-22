@@ -18,6 +18,12 @@
       <%= link_to "マイページへ", mypage_path, class: "btn btn-primary btn-lg" %>
       <%= link_to "新規投稿", new_post_path, class: "btn btn-success btn-lg" %>
     </div>
+
+    <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
+      <%= link_to "投稿一覧へ", posts_path, class: "btn btn-info btn-lg text-white" %>
+      <%= link_to "グループ一覧へ", groups_path, class: "btn btn-secondary btn-lg text-white" %>
+      <%= link_to "グループ作成へ", new_group_path, class: "btn btn-warning btn-lg text-white" %>
+    </div>
   <% end %>
 
 </div>

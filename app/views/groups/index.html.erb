@@ -1,13 +1,13 @@
 <h2>グループ</h2>
 
-<%= link_to "New Group", new_group_path, class: "btn btn-primary mb-3" %>
+<%= link_to "グループ作成", new_group_path, class: "btn btn-primary mb-3" %>
 
 <% @groups.each do |group| %>
   <p>
     <%= link_to group.name, group_path(group) %>
 
     <% if group.owner_id == current_user.id %>
-      <%= link_to "Edit", edit_group_path(group), class: "btn btn-sm btn-outline-primary" %>
+      <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-primary" %>
     <% end %>
   </p>
 <% end %>
