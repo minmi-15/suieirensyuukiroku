@@ -12,7 +12,7 @@
   <%= f.number_field :distance %>
 
   <p>種目</p>
-  <%= f.text_field :stroke %>
+  <%= f.collection_select :stroke, Post.strokes_i18n.to_a, :first, :last, {}, {} %>
 
   <p>時間(分)</p>
   <%= f.number_field :time %>

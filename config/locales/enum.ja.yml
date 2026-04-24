@@ -1,0 +1,8 @@
+ja:
+  enums:
+    post:
+      stroke:
+        free_style: クロール
+        breast_stroke: 平泳ぎ
+        back_stroke: 背泳ぎ
+        butterfly: バタフライ

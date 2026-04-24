@@ -18,6 +18,33 @@
                 class: "btn btn-danger w-100" %>
         </div>
       </div>
+      <div class="card mb-4 shadow">
+        <div class="card-body">
+          <%= form_with url: mypage_path, method: :get do |f| %>
+            <div class="mb-2">
+              <%= f.label :keyword, "メニューで探す" %>
+              <%= f.search_field :title, class: "form-control", placeholder: "キーワードを入力", value: params[:keyword] %>
+            </div>
+
+            <div class="mb-2">
+              <%= f.label :stroke, "種目で絞り込む" %>
+              <%= f.collection_select :stroke, Post.strokes_i18n.to_a, :first, :last, { include_blank: '--種目を選択--', selected: params[:stroke] }, { class: "form-control" } %>
+            </div>
+
+            <div class="mb-2">
+              <%= f.label :order_column, "並び替えの項目" %>
+              <%= f.select :order_column, [["記録順", :created_at], ["距離", :distance], ["時間", :time]], { selected: params[:order_column] }, { class: "form-control" } %>
+            </div>
+
+            <div class="mb-2">
+              <%= f.label :order_method, "並び順" %>
+              <%= f.select :order_method, [["降順", :desc], ["昇順", :asc]], { selected: params[:order_method] }, { class: "form-control" } %>
+            </div>
+
+            <%= f.submit "検索する", class: "btn btn-primary w-100" %>
+          <% end %> 
+        </div>
+      </div>
     </div>
 
     <div class="col-md-8">
@@ -33,7 +60,7 @@
               <h5><%= post.title %></h5>
               <p><%= post.content %></p>
 
-              <p>種目: <%= post.stroke %></p>
+              <p>種目: <%= post.stroke_i18n %></p>
               <p>時間: <%= post.time %> 分</p>
               <p>距離: <%= post.distance %> m</p>
               <p>今月の距離: <%= @monthly_distance %> m</p>

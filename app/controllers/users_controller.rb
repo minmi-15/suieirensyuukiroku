@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @posts = current_user.posts.order(created_at: :desc)
+    @posts = current_user.posts
 
-    @total_distance = current_user.posts.sum(:distance)
-
-    @monthly_distance = current_user.posts
+    @total_distance = @posts.sum(:distance)
+    @monthly_distance = @posts
       .where(created_at: Time.current.all_month)
       .sum(:distance)
+    @posts = @posts.where("title LIKE ?", "%#{params[:title]}%") if params[:title].present?
+    @posts = @posts.where(stroke: params[:stroke]) if params[:stroke].present?
+    @posts = @posts.order("#{ params[:order_column] } #{ params[:order_method] }")
   end
 
   def edit
