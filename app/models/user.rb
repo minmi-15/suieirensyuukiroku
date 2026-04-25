@@ -9,4 +9,12 @@ class User < ApplicationRecord
   has_many :group_users
   has_many :groups, through: :group_users
   has_many :owned_groups, class_name: "Group", foreign_key: "owner_id"
+
+  scope :search, -> (keyword) {
+    if keyword.present?
+      where("name LIKE ? OR email LIKE ?", "%#{keyword}%", "%#{keyword}%")
+    else
+      all
+    end
+  }
 end

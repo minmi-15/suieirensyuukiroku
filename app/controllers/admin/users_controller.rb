@@ -3,7 +3,12 @@ class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @users = User.all
+    @keyword = params[:keyword]
+    @users = if @keyword.present?
+              User.where("name LIKE ? OR email LIKE ?", "%#{@keyword}%", "%#{@keyword}%")
+             else
+              User.all
+             end
   end
 
   def destroy
