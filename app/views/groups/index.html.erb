@@ -1,13 +1,24 @@
-<h2>グループ</h2>
+<h2>グループ一覧</h2>
 
-<%= link_to "グループ作成", new_group_path, class: "btn btn-primary mb-3" %>
+<div class="mb-3">
+  <%= link_to "グループ作成", new_group_path, class: "btn btn-primary mb-3" %>
+</div>
 
-<% @groups.each do |group| %>
-  <p>
-    <%= link_to group.name, group_path(group) %>
+<div class="row">
+  <% @groups.each do |group| %>
+    <div class="col-md-4 mb-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to group.name, group_path(group) %></h5>
+          <p class="card-text text-muted"><%= group.introduction.truncate(50) if group.introduction.present? %></p>
 
-    <% if group.owner_id == current_user.id %>
-      <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-primary" %>
-    <% end %>
-  </p>
-<% end %>
+          <div class="d-flex justify-content-end mt-2">
+            <% if group.owner_id == current_user.id %>
+              <%= link_to "編集", edit_group_path(group), class: "btn btn-sm btn-outline-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
