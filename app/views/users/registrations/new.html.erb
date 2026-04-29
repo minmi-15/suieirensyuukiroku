@@ -3,7 +3,7 @@
     <div class="card shadow-sm mt-4">
       <div class="card-body">
 
-        <h2 class="text-center mb-4">Sign up</h2>
+        <h2 class="text-center mb-4">新規登録</h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "layouts/error_messages", model: f.object %>
@@ -27,7 +27,7 @@
           </div>
 
           <div class="my-3">
-            <%= f.submit "Sign up", class: "btn btn-block btn-primary" %>
+            <%= f.submit "アカウント作成", class: "btn btn-block btn-primary" %>
           </div>
         <% end %>
 
