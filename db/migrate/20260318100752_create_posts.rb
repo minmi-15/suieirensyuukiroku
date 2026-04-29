@@ -7,6 +7,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :stroke
       t.string :time
       t.references :user, null: false, foreign_key: true
+      t.date :practice_day
 
       t.timestamps
     end

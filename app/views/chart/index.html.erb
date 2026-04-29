@@ -1,0 +1,36 @@
+<h1>Chart#index</h1>
+<p>Find me in app/views/chart/index.html.erb</p>
+
+<% posts = current_user.posts %>
+<% data = User.first.posts.group(:practice_day).sum(:distance) %>
+<% labels = (Date.current.beginning_of_month..Date.current.end_of_month).to_a.map(&:to_s) %>
+<% values = (Date.current.beginning_of_month..Date.current.end_of_month).map { |o| User.first.posts.where(practice_day: o).sum(:distance) } %>
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <%== labels %>,
+      datasets: [{
+        label: '# of Votes',
+        data: <%== values %>,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>

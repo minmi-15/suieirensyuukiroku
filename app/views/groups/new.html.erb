@@ -1,17 +1,23 @@
-<h2>グループ作成</h2>
+<<div class="container" style="max-width: 600px;">
+  <div class="bg-white shadow rounded-3 p-4 mt-5">
 
-<%= form_with model: @group, local: true do |f| %>
-  <div>
-    <%= f.label :name, "グループ名" %><br>
-    <%= f.text_field :name %>
-  </div>
+    <h2 class="text-center mb-4">グループ作成</h2>
 
-  <div>
-    <%= f.label :introduction, "紹介文" %><br>
-    <%= f.text_area :introduction %>
-  </div>
+    <%= form_with model: @group, local: true do |f| %>
 
-  <div>
-    <%= f.submit "作成する", class: "btn btn-primary mt-3" %>
+      <div class="mb-3">
+        <%= f.label :name, "グループ名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :introduction, "紹介文" %>
+        <%= f.text_area :introduction, class: "form-control" %>
+      </div>
+
+      <%= f.submit "作成する", class: "btn btn-primary w-100 mt-3" %>
+
+    <% end %>
+
   </div>
-<% end %>
+</div>

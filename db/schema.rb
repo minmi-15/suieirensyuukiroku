@@ -67,19 +67,10 @@ ActiveRecord::Schema.define(version: 2026_04_23_054606) do
     t.integer "stroke", default: 0
     t.integer "time"
     t.integer "user_id", null: false
+    t.date "practice_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "training_comments", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id", null: false
-    t.integer "training_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["training_id"], name: "index_training_comments_on_training_id"
-    t.index ["user_id"], name: "index_training_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,6 +93,4 @@ ActiveRecord::Schema.define(version: 2026_04_23_054606) do
   add_foreign_key "post_comments", "posts"
   add_foreign_key "post_comments", "users"
   add_foreign_key "posts", "users"
-  add_foreign_key "training_comments", "trainings"
-  add_foreign_key "training_comments", "users"
 end

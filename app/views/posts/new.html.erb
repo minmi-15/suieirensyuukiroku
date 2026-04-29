@@ -1,21 +1,38 @@
-<h1>練習記録を投稿</h1>
-<%= form_with model: @post, local: true do |f| %>
-  <%= render "layouts/error_messages", model: f.object %>
+<div class="container" style="max-width: 600px;">
+  <div class="bg-white shadow rounded-3 p-4 mt-5">
 
-  <p>練習タイトル</p>
-  <%= f.text_field :title %>
+    <h1 class="text-center mb-4">練習記録を投稿</h1>
 
-  <p>練習内容</p>
-  <%= f.text_area :content %>
+    <%= form_with model: @post, local: true do |f| %>
+      <%= render "layouts/error_messages", model: f.object %>
 
-  <p>距離(m)</p>
-  <%= f.number_field :distance %>
+      <div class="mb-3">
+        <%= f.label :title, "練習タイトル" %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
 
-  <p>種目</p>
-  <%= f.collection_select :stroke, Post.strokes_i18n.to_a, :first, :last, {}, {} %>
+      <div class="mb-3">
+        <%= f.label :content, "練習内容" %>
+        <%= f.text_area :content, class: "form-control" %>
+      </div>
 
-  <p>時間(分)</p>
-  <%= f.number_field :time %>
+      <div class="mb-3">
+        <%= f.label :distance, "距離(m)" %>
+        <%= f.number_field :distance, class: "form-control" %>
+      </div>
 
-  <%= f.submit "記録する" %>
-<% end %>
+      <div class="mb-3">
+        <%= f.label :stroke, "種目" %>
+        <%= f.collection_select :stroke, Post.strokes_i18n.to_a, :first, :last, {}, { class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :time, "時間(分)" %>
+        <%= f.number_field :time, class: "form-control" %>
+      </div>
+
+      <%= f.submit "記録する", class: "btn btn-primary w-100" %>
+    <% end %>
+
+  </div>
+</div>
