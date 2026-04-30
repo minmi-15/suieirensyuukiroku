@@ -1,6 +1,8 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
 
+<p>練習日: <%= @post.practice_day.to_s %></p>
+
 <%= link_to "編集", edit_post_path(@post) %>
 
 <%= link_to "削除", post_path(@post), method: :delete, data: { confirm: "本当に削除しますか？" } %>
