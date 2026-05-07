@@ -1,4 +1,6 @@
 class ChartController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     
     if session[:offset].nil?
