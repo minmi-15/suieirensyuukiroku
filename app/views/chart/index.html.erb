@@ -1,11 +1,12 @@
 <h1>活動グラフ</h1>
 <p>あなたの練習データをグラフで確認できます。</p>
 
-<% posts = current_user.posts %>
-<% data = User.first.posts.group(:practice_day).sum(:distance) %>
-<% labels = (Date.current.beginning_of_month..Date.current.end_of_month).to_a.map(&:to_s) %>
-<% values = (Date.current.beginning_of_month..Date.current.end_of_month).map { |o| User.first.posts.where(practice_day: o).sum(:distance) } %>
+<div class="d-flex justify-content-between">
+  <%= link_to "prev", chart_path(month: :prev), data: { turbolinks: false } %>
+  <%= link_to "next", chart_path(month: :next), data: { turbolinks: false } %>
+</div>
 
+<h2><%= @current_month %>月</h2>
 <div>
   <canvas id="myChart"></canvas>
 </div>
@@ -18,10 +19,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: <%== labels %>,
+      labels: <%== @labels %>,
       datasets: [{
         label: '# of Votes',
-        data: <%== values %>,
+        data: <%== @values %>,
         borderWidth: 1
       }]
     },

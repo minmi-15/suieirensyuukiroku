@@ -1,11 +1,8 @@
-<h1>練習記録を編集</h1>
+<div class="container" style="max-width: 600px;">
+  <div class="bg-white shadow rounded-3 p-4 mt-5">
 
-<%= form_with model: @post do |f| %>
-  <p>練習タイトル</p>
-  <%= f.text_field :title %>
+    <h1 class="text-center mb-4">練習記録を編集</h1>
 
-  <p>練習内容</p>
-  <%= f.text_area :content %>
-
-  <%= f.submit "更新する" %>
-<% end %>
+    <%= render "form", post: @post %>
+  </div>
+</div>
