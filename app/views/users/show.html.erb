@@ -3,6 +3,7 @@
 
   <div class="row">
     <div class="col-md-4">
+
       <div class="card mb-4 shadow">
         <div class="card-body">
           <h5>ユーザー情報</h5>
@@ -14,10 +15,30 @@
 
           <%= link_to "退会する", user_path(@user),
             method: :delete,
-                data: { confirm: "本当に退会しますか？" },
-                class: "btn btn-danger w-100" %>
+            data: { confirm: "本当に退会しますか？" },
+            class: "btn btn-danger w-100" %>
         </div>
       </div>
+
+      <div class="card mb-4 shadow">
+        <div class="card-body">
+          <h5>獲得バッジ</h5>
+
+          <% if @user.user_badges.any? %>
+            <div class="d-flex flex-wrap gap-3">
+              <% @user.user_badges.includes(:badge).each do |ub| %>
+                <div class="text-center">
+                  <img src="<%= ub.badge.icon %>" width="60">
+                  <p><%= ub.badge.name %></p>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <p>まだバッジはありません</p>
+          <% end %>
+        </div>
+      </div>
+
       <div class="card mb-4 shadow">
         <div class="card-body">
           <%= form_with url: mypage_path, method: :get do |f| %>

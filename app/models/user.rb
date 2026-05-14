@@ -3,12 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
   has_many :posts, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :group_users
   has_many :groups, through: :group_users
   has_many :owned_groups, class_name: "Group", foreign_key: "owner_id"
+
+  has_many :user_badges, dependent: :destroy
+  has_many :badges, through: :user_badges
 
   scope :search, -> (keyword) {
     if keyword.present?

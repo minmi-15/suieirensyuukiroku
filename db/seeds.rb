@@ -16,6 +16,18 @@ Admin.create!(email: "guest@i.co.jp", password: "swim40")
   )
 end
 
+Badge.create!(
+  name: "初投稿",
+  description: "初めて投稿しました!",
+  icon: "first.png"
+)
+
+Badge.create!(
+  name: "1000m達成",
+  description: "合計距離が1000mを超えました!",
+  icon: "1000m.png"
+)
+
 titles = [ "基礎フォーム練習", "クロール基礎練習", "背泳ぎフォーム練習" ]
 contents =  ["アップ200m→キック400m→プル400m→スイム400m", "アップ200m→キック200m→プル200m→スイム200m", "アップ200m→キック25m×8本→プル50m×4本→スイム200m"]
 User.all.limit(3).each do |user|
