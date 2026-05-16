@@ -1,0 +1,7 @@
+<h2><%= @event.title %></h2>
+
+<p><%= @event.content %></p>
+<p class="text-muted">日付: <%= @event.event_date %></p>
+
+<%= link_to "戻る", group_events_path(@group), class: "btn btn-secondary" %>
+

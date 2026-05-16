@@ -2,7 +2,7 @@
 
 <p><%= @group.introduction %></p>
 
-<<p>Owner: <%= @group.owner.name %></p>
+<p>Owner: <%= @group.owner.name %></p>
 
 <% if @group.owner_id != current_user.id %>
   <% if @group.users.include?(current_user) %>
@@ -12,6 +12,8 @@
   <% end %>
 <% end %>
 
-<% if @group.owner_id == current_user.id%>
+<%= link_to "イベント一覧へ", group_events_path(@group), class: "btn btn-info mt-3" %>
+
+<% if @group.owner_id == current_user.id %>
   <%= link_to "イベント通知", group_new_event_path(@group), class: "btn btn-warning mt-3 text-white" %>
 <% end %>

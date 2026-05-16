@@ -1,0 +1,16 @@
+<h2><%= @group.name %> のイベント一覧</h2>
+
+<% if @events.any? %>
+  <% @events.each do |event| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h4><%= link_to event.title, group_event_path(@group, event) %></h4>
+        <p><%= event.content %></p>
+        <p class="text-muted">日付: <%= event.event_date %></p>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <p>まだイベントはありません</p>
+<% end %>
+
