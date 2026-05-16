@@ -1,29 +1,49 @@
-<div class="container text-center" style="margin-top: 80px;">
+<div 
+  class="text-center" 
+  style="
+    margin-top: 80px;
+    padding: 80px 20px;
 
-  <i class="fa-solid fa-person-swimming" 
-     style="font-size: 4.5rem; color: #0d6efd; margin-bottom: 30px;"></i>
+    background-image: url('<%= asset_path "water.jpg" %>');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  "
+>
 
-  <h1 class="mb-2">ようこそ！</h1>
-  <h3 class="mb-4">水泳練習記録アプリへ</h3>
+  <div style="
+    background: rgba(255, 255, 255, 0.78);
+    padding: 50px 30px;
+    border-radius: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+  ">
 
-  <p class="text-muted mb-3">
-    練習内容・距離・時間を記録して、あなたの成長を見える化しましょう。
-  </p>
-  <p class="text-muted mb-4">
-    日々の練習を簡単に管理し、月ごとの合計距離や成長の変化を確認できます。
-  </p>
+    <i class="fa-solid fa-person-swimming" 
+       style="font-size: 4.5rem; color: #0d6efd; margin-bottom: 30px;"></i>
 
-  <% if user_signed_in? %>
-    <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
-      <%= link_to "マイページへ", mypage_path, class: "btn btn-primary btn-lg" %>
-      <%= link_to "新規投稿", new_post_path, class: "btn btn-success btn-lg" %>
-    </div>
+    <h1 class="mb-2">ようこそ！</h1>
+    <h3 class="mb-4">水泳練習記録アプリへ</h3>
 
-    <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
-      <%= link_to "投稿一覧へ", posts_path, class: "btn btn-info btn-lg text-white" %>
-      <%= link_to "グループ一覧へ", groups_path, class: "btn btn-secondary btn-lg text-white" %>
-      <%= link_to "グループ作成へ", new_group_path, class: "btn btn-warning btn-lg text-white" %>
-    </div>
-  <% end %>
+    <p class="text-muted mb-3">
+      練習内容・距離・時間を記録して、あなたの成長を見える化しましょう。
+    </p>
+    <p class="text-muted mb-4">
+      日々の練習を簡単に管理し、月ごとの合計距離や成長の変化を確認できます。
+    </p>
 
+    <% if user_signed_in? %>
+      <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
+        <%= link_to "マイページへ", mypage_path, class: "btn btn-primary btn-lg" %>
+        <%= link_to "新規投稿", new_post_path, class: "btn btn-success btn-lg" %>
+      </div>
+
+      <div class="d-flex justify-content-center mt-4" style="gap: 1.5rem;">
+        <%= link_to "投稿一覧へ", posts_path, class: "btn btn-info btn-lg text-white" %>
+        <%= link_to "グループ一覧へ", groups_path, class: "btn btn-secondary btn-lg text-white" %>
+        <%= link_to "グループ作成へ", new_group_path, class: "btn btn-warning btn-lg text-white" %>
+      </div>
+    <% end %>
+
+  </div>
 </div>
