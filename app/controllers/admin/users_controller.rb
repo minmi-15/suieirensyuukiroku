@@ -2,6 +2,7 @@ class Admin::UsersController < ApplicationController
   layout 'admin'
   before_action :authenticate_admin!
 
+  
   def index
     @keyword = params[:keyword]
     @users = if @keyword.present?
